@@ -1,11 +1,28 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @import './select.css';
+@import './switch.css';
+@import './dialog.css';
+@import './textInput.css';
+@import './btn.css';
 .main_container {
-  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 @layer components {
   .title {
     font-size: 50px;
     font-weight: bold;
   }
+}
+@utility btn-primary-source {
+  @apply bg-primary-100 text-zinc-200 hover:bg-primary-200;
+}
+@utility btn-secondary-source {
+  @apply bg-secondary-100 text-white hover:bg-secondary-200;
+}
+@theme {
+  --color-primary-100: #2563eb;
+  --color-primary-200: #1d4ed8;
+  --color-secondary-100: #22c55e;
+  --color-secondary-200: #16a34a;
+  --breakpoint-xs: 32rem;
 }

@@ -1,0 +1,18 @@
+@utility b-switch {
+  @apply border px-10 py-3 rounded-4xl relative;
+}
+@utility b-switch-button {
+  @apply w-[42px] h-[42px] rounded-full cursor-pointer shadow-md
+    absolute top-[50%] translate-y-[-50%] bg-zinc-400; 
+}
+.b-switch-animation {
+  animation: -animation 3s ease-in-out 1s infinite alternate both running;
+}
+@keyframes switch-animation {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}

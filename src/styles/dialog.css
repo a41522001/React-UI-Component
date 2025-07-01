@@ -1,0 +1,11 @@
+@utility b-dialog-container {
+  @apply 
+    w-full h-screen bg-gray-200 absolute top-0 z-[9999] 
+    opacity-80 flex justify-center items-center 
+}
+@utility b-dialog {
+  @apply text-2xl bg-white rounded-sm shadow-xl scale-0 opacity-0 transition-transform duration-300 ease-in-out
+}
+@utility b-dialog-visible {
+  @apply scale-100 opacity-100
+}

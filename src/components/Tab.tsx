@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { TabContext } from '../pages/TabPage';
 import clsx from 'clsx';
 interface Item {
   title: string | number;
@@ -11,6 +12,9 @@ interface Props {
 }
 
 const Tab = ({ items, value = '' }: Props) => {
+  const tab = useContext(TabContext);
+  console.log(tab);
+  
   const containerClassName = 'border border-zinc-200 rounded-lg shadow-lg';
   const tabUlClassName = 'flex px-3 border-b border-zinc-300';
   const tabLiClassName = 'border-b-2 p-3 hover:cursor-pointer hover:border-zinc-400';
@@ -26,6 +30,7 @@ const Tab = ({ items, value = '' }: Props) => {
   } 
   return (
     <>
+    <p>{tab}</p>
     <p>{currentTab}</p>
       <div className={containerClassName}>
         <ul className={tabUlClassName}>

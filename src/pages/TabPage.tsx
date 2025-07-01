@@ -1,5 +1,9 @@
 import Tab from '../components/Tab';
+import { createContext, useState } from 'react';
+export const TabContext = createContext('');
+
 const TabPage = () => {
+  const [tab, setTab] = useState('你好');
   const items = [
     {
       title: '個人資料',
@@ -16,9 +20,12 @@ const TabPage = () => {
   ]
   return(
     <>
-      <Tab items={items}>
-        <div>123</div>      
-      </Tab>
+      <TabContext.Provider value={tab}>
+        <Tab items={items}>
+          <div>123</div>      
+        </Tab>
+      </TabContext.Provider>
+      <button onClick={() => setTab(value => value + '好')}>點我</button>
     </>
   )
 }
