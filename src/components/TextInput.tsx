@@ -2,20 +2,23 @@ import { useState, forwardRef, useImperativeHandle, useRef } from 'react';
 type Rule = (value: string) => string | boolean;
 type Type = 'text' | 'password' | 'email';
 interface Props {
+  value: string;
+  type: Type;
   label?: string;
   id?: string;
-  value: string;
   name?: string;
   className?: string;
-  type: Type;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  rules?: Rule[];
   wrapClassName?: string;
+  errorTextClassName?: string;
+  labelClassName?: string;
   placeholder?: string;
   disabled?: boolean;
   maxLength?: number;
-  errorTextClass?: string;
+  rules?: Rule[];
+  autoComplete?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
 const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
     label,
@@ -30,7 +33,9 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
     placeholder = '',
     disabled = false,
     maxLength,
-    errorTextClass,
+    errorTextClassName,
+    labelClassName = '',
+    autoComplete = '',
   } = props;
   const textInputRef = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => textInputRef.current!);
@@ -54,7 +59,11 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
 
   return (
     <div className={`flex flex-col gap-1 ${wrapClassName}`}>
-      {label && <label htmlFor={id}>{label}</label>}
+      {label && (
+        <label htmlFor={id} className={labelClassName}>
+          {label}
+        </label>
+      )}
       <input
         id={id}
         className={`border rounded px-1 ${className}`}
@@ -66,11 +75,12 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
         disabled={disabled}
         maxLength={maxLength}
         ref={textInputRef}
+        autoComplete={autoComplete}
       />
       {isError &&
         errorText.map((item, index) => {
           return (
-            <span className={errorTextClass ?? 'validate_error'} key={index}>
+            <span className={errorTextClassName ?? 'b-validate-error'} key={index}>
               {item}
             </span>
           );

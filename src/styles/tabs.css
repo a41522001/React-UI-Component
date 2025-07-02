@@ -1,0 +1,8 @@
+@layer components {
+  .tabs-base {
+    @apply border-transparent text-zinc-400;
+  }
+  .tabs-active {
+    @apply border-sky-500 text-sky-500 font-semibold;
+  }
+}

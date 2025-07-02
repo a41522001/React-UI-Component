@@ -28,44 +28,50 @@ const TextInputPage = () => {
       };
     });
   };
-
+  const handleSubmitForm = (): void => {
+    console.log(user);
+  };
   return (
     <>
-      <form
-        className="flex flex-col items-center gap-3 border p-3 rounded border-zinc-500 max-w-80 mx-auto"
-        onSubmit={(e) => e.preventDefault()}
-      >
-        <TextInput
-          value={user.username}
-          onChange={handleSetUser}
-          type="text"
-          label="用戶名"
-          className="max-w-40 w-full"
-          name="username"
-          id="username"
-        />
-        <TextInput
-          value={user.email}
-          onChange={handleSetUser}
-          type="text"
-          label="電子信箱"
-          className="max-w-40 w-full"
-          rules={rules.email}
-          name="email"
-          id="email"
-        />
-        <TextInput
-          value={user.password}
-          onChange={handleSetUser}
-          type="password"
-          label="密碼"
-          className="max-w-40 w-full"
-          rules={rules.password}
-          name="password"
-          id="password"
-        />
-        <Btn className="btn-primary">送出</Btn>
-      </form>
+      <div className="flex flex-col items-center gap-3 border p-3 rounded border-zinc-500 max-w-80 mx-auto bg-sky-50">
+        <form className="flex flex-col items-start gap-3" onSubmit={(e) => e.preventDefault()}>
+          <TextInput
+            value={user.username}
+            onChange={handleSetUser}
+            type="text"
+            label="用戶名"
+            className="max-w-40 w-full"
+            wrapClassName="w-40"
+            name="username"
+            id="username"
+          />
+          <TextInput
+            value={user.email}
+            onChange={handleSetUser}
+            type="text"
+            label="電子信箱"
+            className="max-w-40 w-full"
+            wrapClassName="w-40"
+            rules={rules.email}
+            name="email"
+            id="email"
+          />
+          <TextInput
+            value={user.password}
+            onChange={handleSetUser}
+            type="password"
+            label="密碼"
+            className="max-w-40 w-full"
+            wrapClassName="w-40"
+            rules={rules.password}
+            name="password"
+            id="password"
+          />
+          <Btn className="btn-primary" onClick={handleSubmitForm}>
+            送出
+          </Btn>
+        </form>
+      </div>
       <div>
         <p>{user.username}</p>
         <p>{user.email}</p>
